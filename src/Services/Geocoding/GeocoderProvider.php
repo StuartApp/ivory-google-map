@@ -51,12 +51,12 @@ class GeocoderProvider extends AbstractProvider implements ProviderInterface
     /**
      * {@inheritdoc}
      */
-    public function __construct(HttpAdapterInterface $adapter, $locale = null, $key = null)
+    public function __construct(HttpAdapterInterface $adapter, $locale = null, $key = null, $https = true)
     {
         parent::__construct($adapter, $locale);
 
         $this->setUrl('http://maps.googleapis.com/maps/api/geocode');
-        $this->setHttps(false);
+        $this->setHttps($https);
         $this->setFormat('json');
         $this->setXmlParser(new XmlParser());
         $this->key = $key;
